@@ -60,8 +60,8 @@ def stream_graph_updates(user_input: str):
     return messages
 
 
-file = "docs/python-crash-course.pdf"
-query = "How to create a class in Python"
+file = "docs/git_tutorial.pdf"
+query = "What is Git"
 
 system_message = f"""Follow the instructions below IN ORDER, AND DO NOT SCIP ANY STEP of them:
     1- use pdf_search tool to search the file {file} for the query delimeted by three hashes below.
