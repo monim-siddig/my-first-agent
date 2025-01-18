@@ -21,8 +21,8 @@ file_path = "docs/python-crash-course.pdf"
 # Define the tools for the agent to use
 
 @tool
-def search_pdf(query: str, file_path="docs/python-crash-course.pdf") -> list:
-    """ hi there"""
+def search_pdf(query: str, file_path:str="docs/python-crash-course.pdf") -> list:
+    """Search a PDF file for a query"""
     load_pdf(file_path)
     pages = load_pdf(file_path)
     vector_store = InMemoryVectorStore.from_documents(pages, OpenAIEmbeddings())

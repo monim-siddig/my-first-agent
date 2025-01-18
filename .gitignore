@@ -1,0 +1,5 @@
+docs/*
+docs/nke-10k-2023.pdf
+docs/python-crash-course.pdf
+./search_agent.py
+__pycache__
