@@ -63,16 +63,17 @@ def stream_graph_updates(user_input: str):
 file = "docs/python-crash-course.pdf"
 query = "How to create a class in Python"
 
-system_message = f"""Follow the instructions below IN ORDER AND DO NOT SCIP ANY STEP of them, YOUR OUTPUT SHOULD BE IN HTML FORMAT.
+system_message = f"""Follow the instructions below IN ORDER, AND DO NOT SCIP ANY STEP of them:
     1- use pdf_search tool to search the file {file} for the query delimeted by three hashes below.
     2- Summerize the response from pdf_search into a variable called PDF_RESULT.
-    3- use the tavily_search tool to search the web for the same query below AND summerize the response 
+    3- use the tavily_search tool, to search the web for the same query below AND summerize the response 
 	    into a variable called WEB_RESULT.
     4- Combine and enhance the results from PDF_RESULT and WEB_RESULT into a single variable called \
         COMBINED_RESULT that is at most three paragraphs.
-    5- your final output should only be a nicly formatted HTML document consisting of:
-        * PDF_RESULT side by side with WEB_RESULT and below them is COMBINED_RESULT labled as summary. 
-    
+    5- your final output should only be a nicly formatted text in the form of:
+        pdf search result:<PDF_RESULT>
+        web search result: <WEB_RESULT>
+        Conclusion:<COMBINED_RESULT>    
     the query:###{query}###"""
 
 print(f'{system_message}\n\n ------------ \n\n')
@@ -80,8 +81,6 @@ response = stream_graph_updates(system_message)[-1]
 
 output = response['messages'][-1].content
 print(f"{response['messages'][-1].content} \n\n\n")
-
-display( HTML(output) )
 
 #resp = llm.invoke(chat_prompt)
 #print(resp.content)
