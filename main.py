@@ -7,7 +7,7 @@ from langgraph.graph import END, START, StateGraph, MessagesState
 from langgraph.prebuilt import ToolNode, tools_condition
 from pdf_search import search_pdf
 
-from IPython.display import display
+from IPython.display import display, HTML
 
 
 graph_builder = StateGraph(MessagesState)
@@ -78,7 +78,10 @@ system_message = f"""Follow the instructions below IN ORDER AND DO NOT SCIP ANY 
 print(f'{system_message}\n\n ------------ \n\n')
 response = stream_graph_updates(system_message)[-1]
 
-print(response['messages'][-1].content)
+output = response['messages'][-1].content
+print(f"{response['messages'][-1].content} \n\n\n")
+
+display( HTML(output) )
 
 #resp = llm.invoke(chat_prompt)
 #print(resp.content)

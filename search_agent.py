@@ -78,7 +78,7 @@ checkpointer = MemorySaver()
 # Note that we're (optionally) passing the memory when compiling the graph
 app = graph_builder.compile(checkpointer=checkpointer)
 
-display(app.get_graph().draw_ascii())
+display(app.get_graph().draw_ascii()) 
         
 # Use the Runnable
 humban_message = HumanMessage(content="What is the weather is sf")
